@@ -1,0 +1,26 @@
+{
+  "name": "nuxt-express-todo-list-server",
+  "version": "1.0.0",
+  "description": "Express server of the nuxt-express todo list app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index",
+    "start": "node index"
+  },
+  "keywords": [
+    "express",
+    "todo",
+    "todolist",
+    "javascript",
+    "node",
+    "nodejs"
+  ],
+  "author": "Zedfeld Busiños",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

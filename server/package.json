@@ -4,8 +4,8 @@
   "description": "Express server of the nuxt-express todo list app",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index",
-    "start": "node index"
+    "dev": "nodemon -r dotenv/config index",
+    "start": "node -r dotenv/config index"
   },
   "keywords": [
     "express",
@@ -18,9 +18,12 @@
   "author": "Zedfeld Busiños",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.2.4"
   },
   "devDependencies": {
+    "dotenv": "^16.0.0",
     "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-prettier": "^4.0.0",

@@ -1,31 +1,27 @@
-const router = require('express').Router()
-let todos = [
-    {
-        id: 1,
-        todo: 'Cook breakfast',
-        completed: false
-    },
-    {
-        id: 2,
-        todo: 'Shower',
-        completed: true
-    },
-]
+const Todo = require('../models/Todo')
 
-router.get('/', (req, res) => {
+const router = require('express').Router()
+
+router.get('/', async (req, res) => {
+    const todos = await Todo.find({})
+    if (!todos) {
+        res.status(404).send({ message: 'Todos not found' });
+    }
+    else if (todos.length === 0) {
+        res.json({ message: 'No todo\'s for today. Create one now!'})
+    }
     res.json(todos)
 })
 
-router.get('/:todoId', (req, res) => {
+router.get('/:todoId', async (req, res) => {
     let { todoId } = req.params
-    let todoFound = todos.some(todo => todo.id == todoId)
+    let todoFound = await Todo.findById(todoId)
     if (!todoFound) {
         res.status(400).send({
             message: `Todo with id ${todoId} not found`
         })
     }
-    let selectedTodo = todos.find(todo => todo.id == todoId)
-    res.json(selectedTodo)
+    res.json(todoFound)
 })
 
 module.exports = router
